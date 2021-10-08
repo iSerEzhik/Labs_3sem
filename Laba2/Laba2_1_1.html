@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<head>
+    <style>
+        .text{
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .word{
+            color:blueviolet;
+            font-family: fantasy;
+            font-size: xx-large;
+        }
+        em{
+            color: yellow;
+        }
+        var{
+            font-size: xx-large;
+            color: darkorange;
+        }
+        sub{
+            color:indigo;
+        }
+        code{
+            font-size: x-large;
+            font-family: monospace;
+            color: darkgreen;
+        }
+        sup{
+            color: tomato;
+        }
+        samp{
+            color: blue;
+        }
+        strong{
+            color: red;
+        }
+    </style>
+</head>
+<title>
+    "Semantic text"
+</title>
+<body>
+    <p class="text">Здесь <em>не очень</em> <div class="word">важная информация</div><br></p>
+    <p class="text">Здесь <strong>особенно важный</strong> текст<br></p>
+    <p class="text">Здесь физическая формула <var>l</var>*<var>w</var>*<var>h</var><br></p>
+    <p class="text">Здесь химическая формула <var>H</var><sub>2</sub><var>O</var><br></p>
+    <p class="text">Здесь математическая формула <var>a</var><sup>2</sup>+<var>b</var><sup>2</sup>=<var>c</var><sup>2</sup><br></p>
+    <p class="text">We are working with <mark>Java</mark><br></p>
+    <code>
+        <pre>
+@Test
+public void testGetAllPosts() {
+HttpResponse httpResponse = ConnectionUtils.getUtils().sendGETRequest(Hosts.POSTS.getAll());
+List<Post> posts = Arrays.asList(JSONUtils.getObjectFromHttpResponse(httpResponse, Post[].class));
+posts.sort(Comparator.comparingInt(Post::getId));
+Assert.assertEquals(posts, posts, "List should be sort");
+Assert.assertEquals(httpResponse.getStatusLine().getStatusCode(), HttpStatus.SC_OK);
+}
+        </pre>
+    </code>
+    <samp>Test comlete successfully</samp><br>
+</body>

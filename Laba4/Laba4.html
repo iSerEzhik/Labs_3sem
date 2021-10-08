@@ -1,0 +1,89 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        .row:hover>.price {
+            background: rgb(241, 243, 118);
+        }
+
+        .addToCart {
+            padding: 17px;
+            background-image: url('https://cdn.icon-icons.com/icons2/3136/PNG/32/add_to_cart_trolley_shopping_icon_192426.png');
+            background-color: white;
+            background-repeat: no-repeat;
+            background-position: left;
+            border: none;
+            margin-left: 10px ;
+            width: min-content;
+        }
+
+        #header {
+            background-color: inherit;
+        }
+
+        .table {
+            display: table;
+        }
+
+        .row {
+            display: table-row;
+            white-space: nowrap;
+            border-width: thin;
+            border-style: solid;
+
+            width: auto;
+        }
+
+        .row *:not(.addToCart) {
+            display: table-cell;
+            border-style: solid;
+            border-width: thin;
+            width: auto;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <table align="center">
+        <tr>
+            <td>Наименование товара:</td>
+            <td><input type="text" name="ProductName" id="ProductName"></td>
+        </tr>
+        <tr>
+            <td>Цена:</td>
+            <td><input type="number" name="ProductPrice" id="ProductPrice"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right"><input type="button" value="Добавить товар" name="Add"
+                    onclick="productTable.append(createRowWithBtn(getDataAndClear(inputProductName),getDataAndClear(inputProductPrice)))">
+            </td>
+        </tr>
+    </table>
+    <div class="table" id="products">
+        <div style="display: table-caption; text-align:center;">Товары</div>
+        <div class="row" id="header">
+            <div>Наименование</div>
+            <div>Цена</div>
+        </div>
+    </div>
+    <div class="table" id="cart" style="width:30%;margin-left: auto; margin-right: 0px;">
+        <div style="display: table-caption; text-align:center;">Корзина</div>
+        <div class="row" id="header">
+            <div>Продукт</div>
+            <div>Цена</div>
+        </div>
+    </div>
+    <input type="button" value="Рассчитать" name='fullPrice' onclick="printFullPrice()" style='float: right;'>
+    <label style='float: right; padding-right: 25px; color: rgb(223, 75, 49);' for="fullPrice" id="result"></label>
+    <script src="Laba4.js"> </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        РК1
+    </title>
+    <style>
+        label {
+            font-size: larger;
+            padding-right: 40px;
+        }
+
+        #submitData {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        РК №1<br>
+        Кретов Сергей Сергеевич<br>
+        ИУ6-35Б<br>
+        Вариант №1<br>
+    </h1>
+    <p>
+        Дан массив числе arr_a. Найти сумму элементов кратных 23, и поместить её на место первого чётного элемента;
+    </p>
+    <form>
+        <table>
+            <tr>
+                <td>
+                    <label for="inputField">Введите данные:</label>
+                </td>
+                <td>
+                    <input type="text" name="inputField" id="inputField" value = '1,2,3,23,46'>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" id="submitData">
+                    <button type="button" name="WorkWithData" value="Change" onclick='DataWorking();inputField.value= "1,2,3,23,46"'>Измениить массив</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <p id = 'get'></p>
+    <p id = 'result'></p>
+    <script>
+        const inputField = document.getElementById('inputField');
+        const result = document.getElementById('result');
+        const get = document.getElementById('get');
+        function DataWorking() {
+            let firstEven;
+            let sum = 0;
+            let array = inputField.value.split(',');
+            get.innerText = `Полученный массив ${array}`;
+            array = array.map(elem =>{ 
+                return parseInt(elem.trim())?parseInt(elem.trim()):alert(`Элемент ${elem} некорректный!!`)});
+            array.forEach(elem => {
+                if (elem % 23 == 0) {
+                    sum += elem;
+                }
+                if (elem % 2 == 0 && !firstEven) {
+                    firstEven = elem;
+                }
+            });
+            array[array.indexOf(firstEven)] = sum;
+            result.innerText = `Результат работы : ${array}`;
+        }
+    </script>
+</body>
+
+</html>
