@@ -13,14 +13,14 @@
         }
 
         .addToCart {
-            padding: 17px;
             background-image: url('https://cdn.icon-icons.com/icons2/3136/PNG/32/add_to_cart_trolley_shopping_icon_192426.png');
             background-color: white;
             background-repeat: no-repeat;
             background-position: left;
             border: none;
-            margin-left: 10px ;
-            width: min-content;
+            margin-left: 10px;
+            height: 32px;
+            width: 32px;
         }
 
         #header {
@@ -36,16 +36,20 @@
             white-space: nowrap;
             border-width: thin;
             border-style: solid;
-
-            width: auto;
+            width: 100%;
         }
 
-        .row *:not(.addToCart) {
+        .row *:not(.buy):not(.buy *) {
             display: table-cell;
             border-style: solid;
             border-width: thin;
-            width: auto;
             text-align: center;
+            width: 30%;
+        }
+        .buy #BuyCount{
+            width: 60%;
+            border-collapse: collapse;
+            
         }
     </style>
 
@@ -54,16 +58,20 @@
 <body>
     <table align="center">
         <tr>
-            <td>Наименование товара:</td>
+            <td><label for="ProducName">Наименование товара:</label></td>
             <td><input type="text" name="ProductName" id="ProductName"></td>
         </tr>
         <tr>
-            <td>Цена:</td>
+            <td><label for="ProductPrice">Цена:</label></td>
             <td><input type="number" name="ProductPrice" id="ProductPrice"></td>
         </tr>
         <tr>
+            <td><label for="ProductCount">Колличество</label></td>
+            <td><input type="number" name="ProductCount" id="ProductCount"></td>
+        </tr>
+        <tr>
             <td colspan="2" align="right"><input type="button" value="Добавить товар" name="Add"
-                    onclick="productTable.append(createRowWithBtn(getDataAndClear(inputProductName),getDataAndClear(inputProductPrice)))">
+                    onclick="addRowToShop()">
             </td>
         </tr>
     </table>
@@ -72,6 +80,7 @@
         <div class="row" id="header">
             <div>Наименование</div>
             <div>Цена</div>
+            <div>Кол-во</div>
         </div>
     </div>
     <div class="table" id="cart" style="width:30%;margin-left: auto; margin-right: 0px;">
@@ -79,6 +88,7 @@
         <div class="row" id="header">
             <div>Продукт</div>
             <div>Цена</div>
+            <div>Кол-во</div>
         </div>
     </div>
     <input type="button" value="Рассчитать" name='fullPrice' onclick="printFullPrice()" style='float: right;'>

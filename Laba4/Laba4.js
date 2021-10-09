@@ -2,41 +2,64 @@ const productTable = document.getElementById("products");
 const cartTable = document.getElementById("cart");
 const inputProductName = document.getElementById("ProductName");
 const inputProductPrice = document.getElementById("ProductPrice");
+const inputProductCount = document.getElementById("ProductCount");
+const productsInShop = new Map();
+const productsInACart = new Map();
 
-function createRowWithBtn(productName, productPrice) {
-  let row = createRowWithoutBtn(productName, productPrice);
+function createRowWithBtn(
+  productsMap,
+  productName,
+  productPrice,
+  productCount
+) {
+  let row = createRowWithoutBtn(
+    productsMap,
+    productName,
+    productPrice,
+    productCount
+  );
   row.append(createAddToCartBtn());
   return row;
 }
 
-function createRowWithoutBtn(productName, productPrice) {
+function createRowWithoutBtn(
+  productsMap,
+  productName,
+  productPrice,
+  productCount
+) {
+  productsMap.set(productName, productCount);
   let row = document.createElement("div");
   row.setAttribute("class", "row");
   let name = document.createElement("div");
   name.innerText = productName;
+  name.setAttribute("class", "name");
   let price = document.createElement("div");
   price.innerText = productPrice;
   price.setAttribute("class", "price");
-  row.append(name, price);
+  let count = document.createElement("div");
+  count.setAttribute("class", "count");
+  count.innerText = productCount;
+  row.append(name, price, count);
   return row;
 }
 
 function createAddToCartBtn() {
+  let buyDiv = document.createElement("div");
+  buyDiv.setAttribute("class", "buy");
+  let inputBuyCount = document.createElement("input");
+  inputBuyCount.setAttribute("type", "number");
+  inputBuyCount.setAttribute("name", "BuyCount");
+  inputBuyCount.setAttribute("id", "BuyCount");
+  inputBuyCount.setAttribute("value", 1);
   let addToCart = document.createElement("button");
   addToCart.setAttribute("class", "addToCart");
   addToCart.setAttribute(
     "onclick",
-    "addToCart(this.parentElement);document.getElementById('result').innerText=\"\""
+    "addToCart(this.parentElement.parentElement);document.getElementById('result').innerText=\"\""
   );
-  return addToCart;
-}
-function addToCart(row) {
-  cartTable.append(
-    createRowWithoutBtn(
-      row.firstElementChild.innerText,
-      row.children.namedItem("price").innerText
-    )
-  );
+  buyDiv.append(inputBuyCount, addToCart);
+  return buyDiv;
 }
 
 function getTableRows(table) {
@@ -46,25 +69,78 @@ function getTableRows(table) {
       !elem?.id.includes("header")
   );
 }
+
 function getDataAndClear(element) {
   let data = element.value;
   if (!data) {
     alert("Field can't be empty");
     return;
   }
-  element.value = "";
+  clear(element);
   return data;
+}
+function clear(elem) {
+  elem.value = "";
 }
 
 function printFullPrice() {
   let sum = 0;
-  getTableRows(cartTable).forEach((element) => {
-    sum += parseInt(element.lastElementChild.innerText);
+  getTableRows(cartTable).forEach((row) => {
+    sum += +row.querySelector(".price").innerText*row.querySelector('.count').innerText;
   });
   document.getElementById("result").innerText = `Сумма покупок ${sum}`;
 }
 
+function addToCart(row) {
+  let rowCount = +row.querySelector('#BuyCount').value;
+  let rowName = row.querySelector(".name").innerText;
+  if(productsInShop.get(rowName)-rowCount<0){
+    alert('На складе не хватает товара');
+  }
+  else{
+  if (productsInACart.has(row.querySelector(".name").innerText)) {
+    let countInTable = getTableRows(cartTable).find(elem=>elem.querySelector(".name").innerText == rowName)
+    .querySelector('.count');
+    countInTable.innerText = +countInTable.innerText + rowCount;
+    productsInACart.set(rowName,productsInACart.get(rowName)+rowCount);
+  }
+  else{
+    cartTable.append(
+      createRowWithoutBtn(
+        productsInACart,
+        rowName,
+        row.querySelector(".price").innerText,
+        rowCount
+      )
+    );
+  }
+  getTableRows(productTable).find(tableRow=>tableRow==row).querySelector('.count').innerText-=rowCount;
+  productsInShop.set(rowName,productsInShop.get(rowName)-rowCount);
+}
+}
+
+function addRowToShop() {
+  let name = getDataAndClear(inputProductName);
+  if (productsInShop.has(name)) {
+    let countInRow = getTableRows(productTable)
+      .find((elem) => elem.querySelector(".name").innerText == name)
+      .querySelector(".count");
+    countInRow.innerText =
+      +getDataAndClear(inputProductCount) + productsInShop.get(name);
+    productsInShop.set(name, +countInRow.innerText);
+  } else {
+    productTable.append(
+      createRowWithBtn(
+        productsInShop,
+        name,
+        getDataAndClear(inputProductPrice),
+        getDataAndClear(inputProductCount)
+      )
+    );
+  }
+}
+
 //Начальный список продуктов
-productTable.append(createRowWithBtn("Колбаса", 200));
-productTable.append(createRowWithBtn("Кабачок", 50));
-productTable.append(createRowWithBtn("Молоко", 75));
+productTable.append(createRowWithBtn(productsInShop, "Колбаса", 200, 15));
+productTable.append(createRowWithBtn(productsInShop, "Кабачок", 50, 10));
+productTable.append(createRowWithBtn(productsInShop, "Молоко", 75, 5));
