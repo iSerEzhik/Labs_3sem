@@ -35,7 +35,9 @@
             background-color: #ff0000;
             color: white;
         }
-        th, td{
+
+        th,
+        td {
             text-align: center;
         }
     </style>
@@ -84,7 +86,8 @@
                     <tr>
                         <th scope="row"></th>
                         <td>Пол:</td>
-                        <td><input type="radio" name="Sex" value="М">М<input type="radio" name="Sex" value="Ж">Ж <br></td>
+                        <td><input type="radio" name="Sex" value="М">М<input type="radio" name="Sex" value="Ж">Ж <br>
+                        </td>
                     </tr>
                     <tr>
                         <th scope="row"></th>
@@ -93,7 +96,7 @@
                 </table>
             </div>
             <div class="col-4">
-                <table border="2"class = "table">
+                <table border="2" class="table">
                     <tr>
                         <th colspan="1" scope="col">#</th>
                         <th colspan="3" scope="col">Числителть</th>
@@ -152,8 +155,9 @@
             </div>
         </div>
         <div>
-            <input type="button" value='Показать дерево' onclick="el.innerText = '';console.clear();printTree(document.documentElement.childNodes)"><br>
-            <p id = 'my-tree'></p>
+            <input type="button" value='Показать дерево'
+                onclick="el.innerText = '';console.clear();printTree(document.documentElement.childNodes)"><br>
+            <p id='my-tree'></p>
         </div>
     </main>
     <footer class="my-primary">
@@ -166,35 +170,35 @@
         const TAB = '&nbsp;';
         const TAB_COUNT = 7;
         let tabBuffer = '';
-        function printTree(nodes){
-            nodes.forEach((element)=>{
-                if(element.nodeType != Node.TEXT_NODE){
-                el.innerHTML+=`${tabBuffer}&lt;${element.nodeName} ${outpurAttributes(element)}&gt;<br>`;
-                console.log(`${'\t'.repeat(tabBuffer.length/TAB.length/TAB_COUNT)}<${element.nodeName} ${outpurAttributes(element)}>`);
-                tabBuffer+=TAB.repeat(TAB_COUNT);
+        function printTree(nodes) {
+            nodes.forEach((element) => {
+                if (element.nodeType != Node.TEXT_NODE) {
+                    el.innerHTML += `${tabBuffer}&lt;${element.nodeName} ${outpurAttributes(element)}&gt;<br>`;
+                    console.log(`${'\t'.repeat(tabBuffer.length / TAB.length / TAB_COUNT)}<${element.nodeName} ${outpurAttributes(element)}>`);
+                    tabBuffer += TAB.repeat(TAB_COUNT);
                 }
-                else{
-                    if(element.textContent.trim()){
-                        el.innerHTML+=`${tabBuffer}${element.textContent}<br/>`;
-                        console.log(`${'\t'.repeat(tabBuffer.length/TAB.length/TAB_COUNT)}${element.textContent}`);
+                else {
+                    if (element.textContent.trim()) {
+                        el.innerHTML += `${tabBuffer}${element.textContent}<br/>`;
+                        console.log(`${'\t'.repeat(tabBuffer.length / TAB.length / TAB_COUNT)}${element.textContent}`);
                     }
-                    
+
                 }
-                if(element.hasChildNodes && element.id!='my-tree'){
+                if (element.hasChildNodes && element.id != 'my-tree') {
                     printTree(element.childNodes);
                 }
-                if(element.nodeType != Node.TEXT_NODE){
-                    tabBuffer = tabBuffer.substr(0,tabBuffer.length - TAB.length*TAB_COUNT);
-                    el.innerHTML+=`${tabBuffer}&lt;/${element.nodeName}&gt;<br>`;
-                    console.log(`${'\t'.repeat(tabBuffer.length/TAB.length/TAB_COUNT)}</${element.nodeName}>`);
+                if (element.nodeType != Node.TEXT_NODE) {
+                    tabBuffer = tabBuffer.substr(0, tabBuffer.length - TAB.length * TAB_COUNT);
+                    el.innerHTML += `${tabBuffer}&lt;/${element.nodeName}&gt;<br>`;
+                    console.log(`${'\t'.repeat(tabBuffer.length / TAB.length / TAB_COUNT)}</${element.nodeName}>`);
                 }
             });
-        }   
+        }
 
-        function outpurAttributes(element){
+        function outpurAttributes(element) {
             let attributesStr = '';
-            element.getAttributeNames().forEach(name=>{
-                attributesStr+=`${name}=${element.getAttribute(name)} `;
+            element.getAttributeNames().forEach(name => {
+                attributesStr += `${name}=${element.getAttribute(name)} `;
             });
             return attributesStr;
         }
