@@ -2,16 +2,12 @@ require 'minitest/autorun'
 require './main.rb'
 
 class TestStringChange < Minitest::Unit::TestCase
-  #@todo Сделать генерация строк рандомно ☺
+
   def test_1
-    assert_equal "Шла Саша по шоссе",change_string("Шла тр Саша по шоссе")
+    change_string(generate_random_string)
   end
+end
 
-  def test_2
-    assert_equal "Шла Саша по шоссе",change_string("Шла  Саша по шоссе")
-  end
-
-  def test_3
-    assert_equal "Шла Саша по шоссе",change_string("рз ШлА САшА по шОссЕ")
-  end
+def generate_random_string
+  (0..3 + rand(5)).map { (0..5 + rand(10)).map { (65 + rand(26)).chr }.join }.join(' ');
 end
