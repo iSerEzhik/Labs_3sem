@@ -1,4 +1,4 @@
-MY_ENUM = {
+MY_ACCURACY = {
   small: 10 ** -4.to_f,
   smaller: 10 ** -5.to_f
 }
