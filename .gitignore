@@ -1,1 +1,4 @@
 *check*
+*.doc*
+*.txt
+.idea
