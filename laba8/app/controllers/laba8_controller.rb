@@ -1,26 +1,31 @@
+# frozen_string_literal: true
+
+# Контроллер для Laba8
 class Laba8Controller < ApplicationController
-  def input
-  end
+  def input; end
+
   def view
     @received = params[:v1]
     if !@received || @received.empty?
-    @result="Unknown!"
+      @result = 'Unknown!'
     else
-    @result,@iterates = calculate(params[:v1].to_i)
+      @result, @iterates = calculate(params[:v1].to_i)
     end
   end
 end
-def calculate(a)
-  iterates = Hash.new
+
+def calculate(arg)
+  iterates = {}
   eps = 10**-4
   x = 1.0
   i = 1
   loop do
-    xn = (x+a/x)/2.0
-    break if ((x-xn).abs<eps)
+    xn = (x + arg / x) / 2.0
+    break if (x - xn).abs < eps
+
     x = xn
     iterates[i] = x
-    i+=1
+    i += 1
   end
-  [x,iterates]
+  [x, iterates]
 end
