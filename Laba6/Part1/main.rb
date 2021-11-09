@@ -6,12 +6,10 @@ MY_ACCURACY = {
 }.freeze
 
 def calculate_row(accuracy)
-  buf = 1
   sum = 0
   k = 1
-  while buf - function(k) > accuracy
+  while function(k) > accuracy
     sum += function(k)
-    buf = function(k)
     k = k.next
   end
   puts "Колличество иттераций: #{k}"
