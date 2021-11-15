@@ -11,6 +11,14 @@ class Laba8Controller < ApplicationController
     else
       @result, @iterates = calculate(params[:v1].to_i)
     end
+    p @result
+    respond_to do |format|
+      format.html
+      format.json do
+        render json:
+                 {type: @result.class.to_s, value: @result}
+      end
+    end
   end
 end
 

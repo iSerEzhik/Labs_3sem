@@ -1,7 +1,7 @@
 <h1>Метод Ньютона – Рафсона</h1>
-<%= form_tag("/laba8/view", :method => "get") do %>
+<%= javascript_pack_tag 'laba8' %>
   <%= label_tag("Введите значения для вычисления квадратного корня :") %>
   <%= text_field_tag(:v1) %> <br/>
   <br/>
-  <%= submit_tag "Send"%>
-<% end %>
+  <%= submit_tag ("Send"), :id => "submit", remote: true%>
+<div id="result"></div>
