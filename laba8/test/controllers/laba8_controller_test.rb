@@ -2,6 +2,7 @@
 
 require 'test_helper'
 
+#RSpec
 class Laba8ControllerTest < ActionController::TestCase
   test 'should get input' do
     get :input
