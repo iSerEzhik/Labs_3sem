@@ -14,6 +14,7 @@ def generate_random_char
   (MIN_CHR + rand(MAX_CHR - MIN_CHR)).chr
 end
 
+#@todo файлы с tmp названиями
 # @return num of different char in files
 def generate_files(path_to_first_file, path_to_second_file, length)
   first_file = File.new(path_to_first_file, 'w')

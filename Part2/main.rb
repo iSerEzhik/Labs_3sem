@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+#@todo
 # Класс Прямоугольника
 class Rectangle
   def initialize(length, width)
@@ -10,7 +11,7 @@ class Rectangle
   attr_reader :length, :width
 
   def type
-    @length == @width ? 'Квадрат' : 'Прямоугольник'
+    length == width ? 'Квадрат' : 'Прямоугольник'
   end
 end
 
@@ -23,10 +24,10 @@ class Parallelepiped < Rectangle
   attr_reader :height
 
   def type
-    if @length == @width && @length == @height
+    if length == width && length == height
       'Куб'
     else
-      @length == @width || @length == @height || @width == @height ? 'Прямоугольный' : 'Прямой'
+      length == width || length == height || width == height ? 'Прямоугольный' : 'Прямой'
     end
   end
 end
