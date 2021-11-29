@@ -1,8 +1,8 @@
 function show_result(data) {
     var result = document.getElementById("result");
     console.log(data.value)
-    result.innerHTML = "<hr/>Result is: " + data.value +
-        "<hr/><p>" + Date() + "</p>";
+    result.innerHTML = "<hr/>Result is: <p id='num'>" + data.value +
+        "</p><hr/><p>" + Date() + "</p>";
 }
 
 jQuery(function ($) {
