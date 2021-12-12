@@ -1,0 +1,18 @@
+<h1>Результат</h1>
+<p>Результат вычисления квадратного корня по методу Ньютона – Рафсона для числа <%= @received %> </p>
+<p id="result"> <%= @result %> </p>
+<% if !!@iterates%>
+<table>
+  <tr>
+    <td>№ Итерация</td>
+    <td>Значение</td>
+  </tr>
+  <% @iterates.each do |key,value| %>
+  <tr>
+    <td><%= key %></td>
+    <td><%= value %></td>
+  </tr>
+  <% end %>
+</table>
+    <% end %>
+<%= link_to "Repeat calculation", :laba8_input %>
