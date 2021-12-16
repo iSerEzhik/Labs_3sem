@@ -5,4 +5,5 @@ class Laba10ControllerTest < ActionDispatch::IntegrationTest
     get laba10_xml_to_html_url
     assert_response :success
   end
+
 end

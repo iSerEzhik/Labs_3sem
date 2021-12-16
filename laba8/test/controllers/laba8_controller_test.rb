@@ -14,12 +14,16 @@ class Laba8ControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'should get from view with 100' do
-    get :view, params: { v1: 100 }
-    assert_equal assigns[:result].round, 10
+  test 'should get HTML content type' do
+    get :view, params: {side:'server'}
+    assert_equal('text/html',@response.content_type.split(';')[0],'Received another format')
   end
-  test 'should get from view with empty' do
-    get :view, params: { v1: '' }
-    assert_equal assigns[:result], 'Unknown!'
+  test 'should get XML content type from xml+xslt' do
+    get :view, params: {side:'client-with-xslt'}
+    assert_equal('application/xml',@response.content_type.split(';')[0],'Received another format')
+  end
+  test 'should get xml content type' do
+    get :view, params: {side:'xml'}
+    assert_equal('application/xml',@response.content_type.split(';')[0],'Received another format')
   end
 end

@@ -4,19 +4,13 @@ class ApplicationController < ActionController::API
   include ActionController::MimeResponds
 end
 
-
 class Laba10Controller < ApplicationController
   def xml_to_html
     begin
-      if (v1 = params[:v1]).empty?
-        throw StandardError
-      else
-        @result, @iterates = calculate(v1)
-      end
-        rescue StandardError
-        @result = 'Unknown!'
-
-      end
+      @result, @iterates = calculate(Integer(params[:v1]))
+    rescue StandardError
+      @result = 'Unknown!'
+    end
     respond_to do |format|
       format.rss { render xml: { result: @result, iterates: @iterates } }
       format.xml { render xml: { result: @result, iterates: @iterates } }
