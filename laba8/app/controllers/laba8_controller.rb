@@ -5,18 +5,32 @@ class Laba8Controller < ApplicationController
   def input; end
 
   def view
-    @received = params[:v1]
-    if !@received || @received.empty?
+    begin
+      @received = Integer(params[:v1])
+    rescue StandardError
       @result = 'Unknown!'
-    else
-      @result, @iterates = calculate(params[:v1].to_i)
+    end
+    begin
+      id = Laba8Model.find_by!(number: @received)
+      @result = id.number
+      @iterates = ActiveSupport::JSON.decode(id.iterates)
+    rescue ActiveRecord::RecordNotFound
+      @result, @iterates = calculate(@received)
+      Laba8Model.create(number:@received,result:@result,iterates:ActiveSupport::JSON.encode(@iterates))
+    end
+  end
+
+  def all_results
+    result = Laba8Model.all.map { |el| { number: el.number, result:el.result, iterates: ActiveSupport::JSON.decode(el.iterates) } }
+    respond_to do |format|
+      format.xml { render xml: result.to_xml }
     end
   end
 end
 
 def calculate(arg)
   iterates = {}
-  eps = 10**-4
+  eps = 10 ** -4
   x = 1.0
   i = 1
   loop do
@@ -24,7 +38,7 @@ def calculate(arg)
     break if (x - xn).abs < eps
 
     x = xn
-    iterates[i] = x
+    iterates["iterate#{i}"] = x
     i += 1
   end
   [x, iterates]
