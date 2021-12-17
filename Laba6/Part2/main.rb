@@ -6,17 +6,16 @@ MY_ACCURACY = {
 }.freeze
 
 def calculate_row(accuracy)
-  k = 1
   e = Enumerator.new do |y|
+  k = 1
     loop do
-      current = function(k)
+      y << function(k)
       k += 1
-      y << current
     end
   end
-  sum = e.take_while {function(++k) > accuracy }.sum
-  puts("Колличество иттераций: #{k}")
-  sum
+  arr = e.take_while {|x| x > accuracy }
+  puts("Колличество иттераций: #{arr.length}")
+  arr.sum
 end
 
 def function(arg)
