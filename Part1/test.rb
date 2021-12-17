@@ -14,7 +14,6 @@ def generate_random_char
   (MIN_CHR + rand(MAX_CHR - MIN_CHR)).chr
 end
 
-#@todo файлы с tmp названиями
 # @return num of different char in files
 def generate_files(path_to_first_file, path_to_second_file, length)
   first_file = File.new(path_to_first_file, 'w')
@@ -41,7 +40,17 @@ end
 
 # Test working with files
 class TestWorkWithFiles < Minitest::Unit::TestCase
+  def setup
+    @file_f = "#{(0..5).map{ rand(65..90).chr }.join.downcase}.txt"
+    @file_g = "#{(0..5).map{ rand(65..90).chr }.join.downcase}.txt"
+  end
+
   def test_working_with_files
-    assert_equal(generate_files(FILE_F_PATH, FILE_G_PATH, FILE_LENGTH), compare_files(FILE_F_PATH, FILE_G_PATH))
+    assert_equal(generate_files(@file_f, @file_g, FILE_LENGTH), compare_files(FILE_F_PATH, FILE_G_PATH))
+  end
+
+  def teardown
+    File.delete(@file_f)
+    File.delete(@file_g)
   end
 end
