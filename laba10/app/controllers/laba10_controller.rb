@@ -1,9 +1,6 @@
 # frozen_string_literal: true
-#
-class ApplicationController < ActionController::API
-  include ActionController::MimeResponds
-end
 
+# Контроллер для обработки
 class Laba10Controller < ApplicationController
   def xml_to_html
     begin
@@ -20,16 +17,16 @@ end
 
 def calculate(arg)
   iterates = {}
-  eps = 10 ** -4
+  eps = 10**-4
   x = 1.0
   i = 1
   loop do
     xn = (x + arg / x) / 2.0
     break if (x - xn).abs < eps
+
     x = xn
     iterates["iterate#{i}"] = x
     i += 1
   end
   [x, iterates]
 end
-
