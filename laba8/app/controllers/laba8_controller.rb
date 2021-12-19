@@ -16,7 +16,7 @@ class Laba8Controller < ApplicationController
       format.html
       format.json do
         render json:
-                 {type: @result.class.to_s, value: @result}
+                 { type: @result.class.to_s, value: @result }
       end
     end
   end
