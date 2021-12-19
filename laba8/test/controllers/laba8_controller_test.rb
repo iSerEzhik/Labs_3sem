@@ -2,17 +2,17 @@
 
 require 'test_helper'
 
-#RSpec
+# RSpec
 class Laba8ControllerTest < ActionController::TestCase
   def setup
-    Laba8Model.all.each &:delete
+    Laba8Model.all.each(&:delete)
   end
 
   test 'add Model to db' do
     count_before = Laba8Model.count
-    get :view, params: {v1:'100'}
+    get :view, params: { v1: '100' }
     count_after = Laba8Model.count
-    assert_equal count_before+1,count_after
+    assert_equal count_before + 1, count_after
   end
 
   test 'unique values' do
@@ -20,6 +20,6 @@ class Laba8ControllerTest < ActionController::TestCase
     count_before = Laba8Model.count
     get :view, params: { v1: '100' }
     count_after = Laba8Model.count
-    assert_equal count_before,count_after
+    assert_equal count_before, count_after
   end
 end

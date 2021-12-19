@@ -12,16 +12,16 @@ class Laba8Controller < ApplicationController
     end
     begin
       id = Laba8Model.find_by!(number: @received)
-      @result = id.number
+      @result = id.result
       @iterates = id.iterates
     rescue ActiveRecord::RecordNotFound
       @result, @iterates = calculate(@received)
-      Laba8Model.create(number:@received,result:@result,iterates:@iterates)
+      Laba8Model.create(number: @received, result: @result, iterates: @iterates)
     end
   end
 
   def all_results
-    result = Laba8Model.all.map { |el| { number: el.number, result:el.result, iterates: el.iterates} }
+    result = Laba8Model.all.map { |el| { number: el.number, result: el.result, iterates: el.iterates } }
     respond_to do |format|
       format.xml { render xml: result }
     end
@@ -30,7 +30,7 @@ end
 
 def calculate(arg)
   iterates = {}
-  eps = 10 ** -4
+  eps = 10**-4
   x = 1.0
   i = 1
   loop do

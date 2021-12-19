@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateLaba8Models < ActiveRecord::Migration[6.0]
   def change
     create_table :laba8_models do |t|
