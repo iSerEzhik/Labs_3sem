@@ -2,6 +2,20 @@
 <%= form_tag(:laba8_view, :method => "get") do %>
   <%= label_tag("Введите значения для вычисления квадратного корня :") %>
   <%= text_field_tag(:v1) %> <br/>
+  <label>
+    <input type="radio" name="side" value="server" id="server-side" checked/>
+    HTML (сторона сервера)
+  </label>
   <br/>
-  <%= submit_tag "Send"%>
+  <label>
+    <input type="radio" name="side" value="client" id="client-side"/>
+    XML
+  </label>
+  <br/>
+  <label>
+    <input type="radio" name="side" value="client-with-xslt" id="client-side-xslt"/>
+    XML + XSLT
+  </label>
+  <br/>
+  <%= submit_tag "Send" %>
 <% end %>

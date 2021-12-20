@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="LR10_transformer.xslt"?>
+<hash>
+  <result type="float">10.000052895642693</result>
+  <iterates>
+    <iterate1 type="float">50.5</iterate1>
+    <iterate2 type="float">26.24009900990099</iterate2>
+    <iterate3 type="float">15.025530119986813</iterate3>
+    <iterate4 type="float">10.840434673026925</iterate4>
+    <iterate5 type="float">10.032578510960604</iterate5>
+    <iterate6 type="float">10.000052895642693</iterate6>
+  </iterates>
+</hash>
