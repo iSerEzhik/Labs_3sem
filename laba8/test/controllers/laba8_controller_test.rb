@@ -2,24 +2,24 @@
 
 require 'test_helper'
 
-#RSpec
+# RSpec
 class Laba8ControllerTest < ActionController::TestCase
-  test 'should get input' do
-    get :input
-    assert_response :success
+  def setup
+    Laba8Model.all.each(&:delete)
   end
 
-  test 'should get view' do
-    get :view
-    assert_response :success
+  test 'add Model to db' do
+    count_before = Laba8Model.count
+    get :view, params: { v1: '100' }
+    count_after = Laba8Model.count
+    assert_equal count_before + 1, count_after
   end
 
-  test 'should get from view with 100' do
-    get :view, params: { v1: 100 }
-    assert_equal assigns[:result].round, 10
-  end
-  test 'should get from view with empty' do
-    get :view, params: { v1: '' }
-    assert_equal assigns[:result], 'Unknown!'
+  test 'unique values' do
+    get :view, params: { v1: '100' }
+    count_before = Laba8Model.count
+    get :view, params: { v1: '100' }
+    count_after = Laba8Model.count
+    assert_equal count_before, count_after
   end
 end
