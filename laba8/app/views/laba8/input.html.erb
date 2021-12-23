@@ -5,3 +5,6 @@
   <br/>
   <%= submit_tag "Send"%>
 <% end %>
+<br>
+<%= button_to 'Logout',session_logout_path,method:"get"%>
+<%= link_to 'Просмотреть всех зарегестрированных пользователей',users_path,method: 'get' %>
