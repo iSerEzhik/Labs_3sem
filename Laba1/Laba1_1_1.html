@@ -1,8 +1,10 @@
 <!DOCTYPE html>
+<html lang="ru">
 <meta charset="UTF-8">
 <title>
     "Semantic text"
 </title>
+
 <body>
     Здесь <em>не очень</em> важная информация<br>
     Здесь <strong>особенно важный</strong> текст<br>
@@ -10,8 +12,7 @@
     Здесь химическая формула H<sub>2</sub>O<br>
     Здесь математическая формула <var>a</var><sup>2</sup>+<var>b</var><sup>2</sup>=<var>c</var><sup>2</sup><br>
     We are working with <mark>Java</mark><br>
-    <code>
-        <pre>
+    <pre>
 @Test
 public void testGetAllPosts() {
 HttpResponse httpResponse = ConnectionUtils.getUtils().sendGETRequest(Hosts.POSTS.getAll());
@@ -20,7 +21,8 @@ posts.sort(Comparator.comparingInt(Post::getId));
 Assert.assertEquals(posts, posts, "List should be sort");
 Assert.assertEquals(httpResponse.getStatusLine().getStatusCode(), HttpStatus.SC_OK);
 }
-        </pre>
-    </code>
+    </pre>
     <samp>Test comlete successfully</samp><br>
 </body>
+
+</html>

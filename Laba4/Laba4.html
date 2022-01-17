@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -57,9 +58,9 @@
 </head>
 
 <body>
-    <table align="center">
+    <table style="text-align: center">
         <tr>
-            <td><label for="ProducName">Наименование товара:</label></td>
+            <td><label for="ProductName">Наименование товара:</label></td>
             <td><input type="text" name="ProductName" id="ProductName"></td>
         </tr>
         <tr>
@@ -71,14 +72,14 @@
             <td><input type="number" name="ProductCount" id="ProductCount"></td>
         </tr>
         <tr>
-            <td colspan="2" align="right"><input type="button" value="Добавить товар" name="Add"
+            <td colspan="2" style="text-align: right"><input type="button" value="Добавить товар" name="Add"
                     onclick="addRowToShop()">
             </td>
         </tr>
     </table>
     <div class="table" id="products">
         <div style="display: table-caption; text-align:center;">Товары</div>
-        <div class="row" id="header">
+        <div class="row" id="headerProducts">
             <div>Наименование</div>
             <div>Цена</div>
             <div>Кол-во</div>
@@ -86,13 +87,13 @@
     </div>
     <div class="table" id="cart" style="width:30%;margin-left: auto; margin-right: 0px;">
         <div style="display: table-caption; text-align:center;">Корзина</div>
-        <div class="row" id="header">
+        <div class="row" id="headerCart">
             <div>Продукт</div>
             <div>Цена</div>
             <div>Кол-во</div>
         </div>
     </div>
-    <input type="button" value="Рассчитать" name='fullPrice' onclick="printFullPrice()" style='float: right;'>
+    <input type="button" value="Рассчитать" name='fullPrice' id="fullPrice" onclick="printFullPrice()" style='float: right;'>
     <label style='float: right; padding-right: 25px; color: rgb(223, 75, 49);' for="fullPrice" id="result"></label>
     <script src="Laba4.js"> </script>
 </body>

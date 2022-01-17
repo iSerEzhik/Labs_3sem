@@ -41,6 +41,9 @@ function createAddToCartBtn() {
     let addToCart = document.createElement('button');
     addToCart.setAttribute('class', 'addToCart');
     addToCart.setAttribute('onclick', 'addToCart(this.parentElement.parentElement);document.getElementById(\'result\').innerText=""');
+    let image = document.createElement('img')
+    image.setAttribute('src','https://img.icons8.com/material-sharp/24/000000/shopping-cart.png');
+    addToCart.append(image);
     buyDiv.append(inputBuyCount, addToCart);
     return buyDiv;
 }

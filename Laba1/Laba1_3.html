@@ -1,29 +1,45 @@
 <!DOCTYPE html>
+<html lang="ru">
+
 <meta charset="UTF-8">
 <title>
     Login form
 </title>
+<style>
+    td {
+        text-align: center;
+    }
+</style>
+<body>
 <header>
     <h1>Регистрация</h1>
 </header>
-<body>
-    <form>
-        <table>
-            <tr> 
-                <td>Логин:</td> 
-                <td><input type="text" name = "LoginField"></td> 
-            </tr>
-            <tr>
-                <td>Пароль:</td>
-                <td><input type="password" name="PasswordField"></td>
-            </tr>
-            <tr>
-                <td>Пол:</td>
-                <td><input type="radio" checked name = "Sex" value="М">М<input type="radio" name = "Sex" value="Ж">Ж <br></td>
-            </tr> 
-            <tr> 
-                <td colspan="2" align="right"><input type="submit" name = "SubmitBtn"></td>
-            </tr>
-        </table>
-    </form>
+<form>
+    <table>
+        <tr>
+            <td>Логин:</td>
+            <td><input type="text" name="LoginField"></td>
+        </tr>
+        <tr>
+            <td>Пароль:</td>
+            <td><input type="password" name="PasswordField"></td>
+        </tr>
+        <tr>
+            <td>Пол:</td>
+            <td>
+                <label>
+                    <input type="radio" checked name="Sex" value="М"/>М
+                </label>
+                <label>
+                    <input type="radio" name="Sex" value="Ж"/>Ж
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: right"><input type="submit" name="SubmitBtn"></td>
+        </tr>
+    </table>
+</form>
 </body>
+
+</html>
