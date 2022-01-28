@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICS6 Bootstrap</title>
+    <link
+            href="https://e-learning.bmstu.ru/iu6/pluginfile.php/7546/mod_folder/content/0/bootstrap.min.css?forcedownload=1"
+            rel="stylesheet">
+    <style>
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+
+        body {
+            margin-bottom: 40px;
+        }
+
+        main {
+            margin-top: 15px;
+        }
+
+        footer {
+            height: 40px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+
+        }
+
+        .my-primary {
+            background-color: #ff0000;
+            color: white;
+        }
+
+        th,
+        td {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark my-primary">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="container">
+    <div class="row">
+        <div class="col-4">
+            <img src="https://e-learning.bmstu.ru/iu6/pluginfile.php/7546/mod_folder/content/0/avatar.jpg?forcedownload=1"
+                 alt="avatar" width="150" height="150">
+        </div>
+        <div class="col-8">
+            <p>Не любой текст</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4 form-group">
+            <form>
+                <table class="table">
+                    <tr>
+                        <th scope="row"></th>
+                        <td>Логин:</td>
+                        <td><input type="text" name="LoginField"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>Пароль:</td>
+                        <td><input type="password" name="PasswordField"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>Пол:</td>
+                        <td><input type="radio" name="Sex" value="М">М<input type="radio" name="Sex" value="Ж">Ж
+                            <br></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td colspan="2" style="text-align: right"><input type="submit" name="SubmitBtn"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="col-4">
+            <table>
+                <tr>
+                    <th colspan="4">Числитель</th>
+                    <th colspan="2">Знаменатель</th>
+                </tr>
+                <tr>
+                    <td rowspan="5">
+                        <p style="transform: rotate(270deg);">Понедельник</p>
+                    </td>
+                    <td><strong>Время пар</strong></td>
+                    <td><strong>Название пары</strong></td>
+                    <td><strong>Кабинет</strong></td>
+                    <td><strong>Название пары</strong></td>
+                    <td><strong>Кабинет</strong></td>
+                </tr>
+                <tr>
+                    <td>8:30-10:05</td>
+                    <td rowspan="2">Электротехника</td>
+                    <td rowspan="2">Каф Физики</td>
+                    <td colspan="2" rowspan="2"></td>
+                </tr>
+                <tr>
+                    <td>10:15-11:50</td>
+                </tr>
+                <tr>
+                    <td>12:00-13:35</td>
+                    <td colspan="3">Базы данных</td>
+                    <td rowspan="2">501ю</td>
+                </tr>
+                <tr>
+                    <td>13:50-14:40</td>
+                    <td colspan="3">Языки интернет программирования</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            Здесь <em>не очень</em> важная информация<br>
+            Здесь <strong>особенно важный</strong> текст<br>
+            Здесь физическая формула <var>l</var>*<var>w</var>*<var>h</var><br>
+            Здесь химическая формула H<sub>2</sub>O<br>
+            Здесь математическая формула
+            <var>a</var><sup>2</sup>+<var>b</var><sup>2</sup>=<var>c</var><sup>2</sup><br>
+            We are working with
+            <mark>Java</mark>
+            <br>
+            <pre>
+        @Test
+        public void testGetAllPosts() {
+        HttpResponse httpResponse = ConnectionUtils.getUtils().sendGETRequest(Hosts.POSTS.getAll());
+        List&lt;Post&gt; posts = Arrays.asList(JSONUtils.getObjectFromHttpResponse(httpResponse, Post[].class));
+        posts.sort(Comparator.comparingInt(Post::getId));
+        Assert.assertEquals(posts, posts, "List should be sort");
+        Assert.assertEquals(httpResponse.getStatusLine().getStatusCode(), HttpStatus.SC_OK);
+        }
+            </pre>
+            <samp>Test complete successfully</samp><br>
+        </div>
+    </div>
+</main>
+<footer class="my-primary">
+    <div class="container">
+        <p class="footer-text">Footer</p>
+    </div>
+</footer>
+</body>
+
+</html>
